@@ -36,7 +36,7 @@ module ActiveRecord::ConnectionAdapters::ArFirebird::DatabaseStatements
       fixture = fixture.stringify_keys
       unknown_columns = fixture.keys - columns.keys
       if unknown_columns.any?
-        raise Fixture::FixtureError, %(table "#{table_name}" has no columns named #{unknown_columns.map(&:inspect).join(', ')}.)
+        raise ActiveRecord::Fixture::FixtureError, %(table "#{table_name}" has no columns named #{unknown_columns.map(&:inspect).join(', ')}.)
       end
       columns.map do |name, column|
         if fixture.key?(name)
